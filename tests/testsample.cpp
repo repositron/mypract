@@ -11,6 +11,11 @@
 #include "../QX.h"
 #include "../minSwaps.h"
 #include "../MinBribes.h"
+#include "../Rotate.h"
+#include "../MaxSumArray.h"
+#include "../MinAbs.h"
+#include "../PairSum.h"
+#include "TestUtil.h"
 
 namespace {
 
@@ -38,11 +43,50 @@ namespace {
         EXPECT_EQ(RodCutting::cutRod(inputA), 22);
     }*/
 
+   TEST(MinAbs, Test1) {
+        std::vector<int> input1({-59, -36, -13, 1, -53, -92, -2, -96, -54, 75});
+        EXPECT_EQ(MinAbs::minimumAbsoluteDifference(input1), 1);
+   }
+
+    TEST(MinAbs, Test2) {
+        std::vector<int> input1({-2, -1, 0, 1,});
+        EXPECT_EQ(MinAbs::minimumAbsoluteDifference(input1), 1);
+    }
+
+    TEST(MaxSubsetArray, ONe2) {
+        std::vector<int> inputA({3, 5, -7, 8, 10});
+        EXPECT_EQ(MaxSumArray::maxSubsetSum(inputA), 15);
+    }
+
+    TEST(RotateLeft, ONe2) {
+        std::vector<int> inputA({1, 2, 3, 4, 5});
+        EXPECT_EQ(Rotate::rotLeft(inputA, 4), std::vector<int>({ 5, 1, 2, 3, 4}));
+    }
+
     TEST(MinBribes, One) {
+        auto tests = TestUtil::load("data/input06.txt");
+        vector<int>& test0 = tests.at(0);
+        EXPECT_EQ(MinBribes::minimumBribes1(test0), 7);
+
         std::vector<int> inputB({1, 2, 5, 3, 7, 8, 6, 4});
-        EXPECT_EQ(MinBribes::minimumBribes0(inputB), 7);
+        EXPECT_EQ(MinBribes::minimumBribes1(inputB), 7);
 
         //EXPECT_EQ(minSwaps::minimumSwaps(std::vector<int>({})), 5);
+    }
+
+    TEST(PairSum, Test1) {
+        std::vector<int> inputA({1, 2, 4, 4});
+        EXPECT_TRUE(PairSum::isPairSum(inputA, 8));
+    }
+
+    TEST(PairSum, Test2) {
+        std::vector<int> inputA({-5, -1,  2, 4, 9, 10, 11});
+        EXPECT_TRUE(PairSum::isPairSum(inputA, 8));
+    }
+
+    TEST(PairSum, FailingTest) {
+        std::vector<int> inputA({-5, -1,  2, 4, 10});
+        EXPECT_FALSE(PairSum::isPairSum(inputA, 8));
     }
 
     TEST(Q1, ONe) {

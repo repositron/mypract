@@ -12,6 +12,7 @@ namespace MinBribes {
     using namespace std;
 
     int ahead(const vector<int> &q, int ofIndex);
+    int minimumBribes1(const vector<int>& q);
     int minimumBribes0(const vector<int>& q);
     void minimumBribes(vector<int> q);
 

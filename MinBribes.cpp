@@ -11,32 +11,36 @@ namespace MinBribes {
     int ahead(const vector<int> &q, int ofIndex) {
         int count = 0;
         for (int i = ofIndex + 1; i < q.size(); i++) {
-            if (q[i] < q[ofIndex])
+            if (q[i] < q[ofIndex]) {
                 count++;
+                if (count > 2)
+                    return count;
+            }
+
         }
         return count;
-
     }
 
-    int minimumBribes0(const vector<int>& q) {
-        int b = 0;
-        for (int i = 0; i < q.size(); i++) {
-            auto diff = ahead(q, i);
-            //if (q[i] - 1 != i) {
-            //auto diff  = q[i] - 1 - i;
+    int minimumBribes1(const vector<int>& q) {
 
-            if (diff > 2) {
+        int count = 0;
 
+        for (int i = q.size() - 1; 0 <= i; i--) {
+            int val = q[i] - i  - 1;
+            if (val > 2)
                 return -1;
+            for (int j = max(0, q[i] - 2);  j < i; j++) {
+                if (q[i] < q[j])
+                    count++;
             }
-            if (diff > 0)
-                b += diff;
-            //}
         }
-        return b;
+        return count;
     }
+
+
+
     void minimumBribes(vector<int> q) {
-        auto b = minimumBribes0(q);
+        auto b = minimumBribes1(q);
         if (b == -1)
             cout << "Too chaotic\n";
         else
