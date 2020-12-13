@@ -15,11 +15,20 @@
 #include "../MaxSumArray.h"
 #include "../MinAbs.h"
 #include "../PairSum.h"
+#include "../Staircase.h"
+#include "../MaxProfit.h"
 #include "TestUtil.h"
 
 namespace {
 
-
+    TEST(t1, MaxProfit) {
+        auto input = std::vector<int>({9, 11, 8, 5, 7, 10});
+        int profit = MaxProfit::maxProfit(input);
+        EXPECT_EQ(profit, 5);
+    }
+    TEST(t1, Staircase) {
+        EXPECT_EQ(Staircase::climbStairs(45), 1000);
+    }
    /* TEST(SampleTest, ParseDoublePair) {
         EXPECT_EQ(ParserUtil::convertDoublePair("129.34, 145.00"), std::make_tuple(12934, 14500));
     }
