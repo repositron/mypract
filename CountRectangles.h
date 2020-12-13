@@ -19,6 +19,7 @@ namespace CountRectangles {
     void sort(std::vector<Point>& points);
 
     int countRectangles(std::vector<Point>& points);
+    int countRectanglesFromYoutube(std::vector<Point>& pointsArr);
 };
 
 

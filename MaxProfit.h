@@ -5,9 +5,11 @@
 #ifndef MYPRACT_MAXPROFIT_H
 #define MYPRACT_MAXPROFIT_H
 
+#include <vector>
 
-class MaxProfit {
-
+namespace MaxProfit {
+    using namespace std;
+    int maxProfit(vector<int> value);
 };
 
 

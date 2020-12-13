@@ -5,9 +5,10 @@
 #ifndef MYPRACT_COINCHANGEPROPLEM_H
 #define MYPRACT_COINCHANGEPROPLEM_H
 
-
-class CoinChangeProplem {
-
+#include <vector>
+namespace CoinChangeProblem {
+    using namespace std;
+    long getMinWays(int n, vector<long> coins);
 };
 
 

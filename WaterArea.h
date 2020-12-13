@@ -6,7 +6,11 @@
 #define MYPRACT_WATERAREA_H
 
 
-class WaterArea {
+#include <vector>
+
+namespace WaterArea {
+    int waterAreaDp(std::vector<int> h);
+    int waterArea(std::vector<int> heights);
 
 };
 
