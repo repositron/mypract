@@ -9,6 +9,7 @@
 namespace CoinChangeProblem {
     using namespace std;
     long getMinWays(int n, vector<long> coins);
+    long getWays(int n, vector<long> coins);
 };
 
 

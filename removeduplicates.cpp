@@ -12,6 +12,20 @@ namespace RemoveDuplicates {
     int removeDuplicates(vector<int>& nums) {
         if (nums.size() == 0)
             return 0;
+        int i = 0;
+        for (int j = 1; j < nums.size(); j++ ) {
+            if (nums[i] != nums[j]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+
+        return i + 1;
+    }
+
+    int removeDuplicatesx(vector<int>& nums) {
+        if (nums.size() == 0)
+            return 0;
         int previous = nums[0];
         size_t k = nums.size();
         vector<int>::iterator newEnd = nums.end();
@@ -26,6 +40,7 @@ namespace RemoveDuplicates {
             if (destIt < it) {
                 copy(it, newEnd, destIt);
                 newEnd = next(nums.begin(), k);
+                it = destIt;
             }
             if (it < newEnd) {
                 previous = *it;

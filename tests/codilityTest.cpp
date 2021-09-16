@@ -15,10 +15,16 @@ namespace {
         EXPECT_EQ(codility::solution(t), 2);
     }
 
-    TEST(binaryTree, Test2apo) {
+    TEST(binaryTree, Test2) {
         std::string s = "(2 , (1, (1, 0, 0), (2,0,0)), 0)";
         auto t = codility::genTree(s);
         EXPECT_EQ(codility::solution(t), 3);
+    }
+
+    TEST(binaryTree, Test3) {
+        std::string s = "(2 , (5, (3, 0, 0), (2,0,0)), (4, (5, (6, (7, 0, 0), 0), 0 ), (2, 0, 0)))";
+        auto t = codility::genTree(s);
+        EXPECT_EQ(codility::solution(t), 24);
     }
 
     TEST(problem2, Test1) {

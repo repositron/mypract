@@ -6,6 +6,7 @@
 #include <unordered_set>
 #include <string>
 #include <sstream>
+#include <queue>
 
 #include "codility.h"
 namespace codility {
@@ -31,12 +32,62 @@ namespace codility {
             rcount = s1(t->r, count);
         }
         prev.erase(t->x);
-        return max(lcount, rcount);
+        return std::max(lcount, rcount) + count;
     }
 
     int solution(Tree* t) {
         return s1(t, 0);
 
+    }
+
+
+    int calcMaxHeight(Tree* t) {
+        int lheight = 0;
+        if (t->l != nullptr) {
+            lheight = calcMaxHeight(t);
+        }
+
+        int rheight = 0;
+        if (t->r != nullptr) {
+            rheight = calcMaxHeight(t);
+        }
+
+        return std::max(lheight, rheight) + 1;
+    }
+
+    void printNode(Tree* t, int rowWidth, int rowPos) {
+
+
+    }
+
+    std::string printTree(Tree* t) {
+        int maxLength = calcMaxHeight(t);
+        int width = 2 << (maxLength - 1);
+        std::ostringstream ss;
+        ss << "max length: " << maxLength << "; width: " << width << '\n';
+        std::queue<Tree*> queue1;
+        std::queue<Tree*> queue2;
+       // auto& row1Nodes = queue1;
+        //auto& row2Nodes = queue2;
+
+        queue1.push(t);
+        while (!queue1.empty()) {
+            int rowWidth = queue1.size();
+            int rowPos = 0;
+            while (!queue1.empty()) {
+                auto t = queue1.front();
+                queue1.pop();
+                printNode(t, rowWidth, rowPos++);
+
+                if (t->l != nullptr)
+                    queue2.push(t->l);
+                if (t->r != nullptr)
+                    queue2.push(t->r);
+
+            }
+            queue1.swap(queue2);
+        }
+        return ss.str();
     }
 
    /* std::string parseWord(std::stringstream& ss) {
@@ -96,8 +147,12 @@ namespace codility {
                 t->r = parseNode(ss);
             }
             ss >> c;
+            if (c != ')')
+                throw std::runtime_error("expect )");
             return t;
         }
+        else
+            throw std::runtime_error("expect (");
         return nullptr;
     }
     Tree* genTree(std::string& treeText) {
