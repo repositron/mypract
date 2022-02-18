@@ -23,4 +23,29 @@ TEST(graphtest, BreadFirstSearch) {
     BreadthFirstPaths bfs(*g, 0);
     EXPECT_TRUE(bfs.hasPathTo(5));
     auto path = bfs.pathTo(5);
+    std::vector<int> myvect(10);
+    //myvect.reserve(100)
+    //std::sort(myvect.begin(), std::distance();
+    // 2 1 1 2 3 1
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+std::vector<int> myvect(10);
+
+
+
+
+
+

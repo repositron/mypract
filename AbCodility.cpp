@@ -4,7 +4,7 @@
 
 #include "AbCodility.h"
 #include <vector>
-
+//https://en.wikipedia.org/wiki/Negative_base
 namespace AbCodility {
     using namespace std;
     int div2ceil(int val) {
